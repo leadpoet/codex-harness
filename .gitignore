@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+results/
+audit/
+*.jsonl
+*.csv
+*.sqlite3
+icps.json
+icps.local.json
+.DS_Store

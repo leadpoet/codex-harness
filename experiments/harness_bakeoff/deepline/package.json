@@ -1,0 +1,12 @@
+{
+  "name": "@leadpoet/harness-bakeoff-deepline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pinned Deepline CLI for the isolated live sourcing bakeoff",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "deepline": "0.3.74"
+  }
+}

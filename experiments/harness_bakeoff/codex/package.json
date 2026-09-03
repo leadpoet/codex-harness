@@ -1,0 +1,13 @@
+{
+  "name": "@leadpoet/harness-bakeoff-codex",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated Codex SDK challenger for the live lead-sourcing bakeoff",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@openai/codex-sdk": "0.152.1"
+  }
+}
