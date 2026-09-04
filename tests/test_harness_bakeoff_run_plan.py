@@ -22,14 +22,8 @@ def _icp(icp_id: str) -> dict[str, str]:
 
 
 class RunPlanSelectionTests(unittest.TestCase):
-    def test_public_runner_has_exactly_five_harnesses(self) -> None:
-        expected = (
-            "pydantic_ai",
-            "pi",
-            "openai_agents",
-            "codex_sdk",
-            "smolagents",
-        )
+    def test_public_runner_has_only_codex(self) -> None:
+        expected = ("codex_sdk",)
 
         self.assertEqual(ARMS, expected)
         self.assertEqual(tuple(MODULES), expected)
@@ -81,11 +75,11 @@ class RunPlanSelectionTests(unittest.TestCase):
             model_pricing={},
             seed=7,
             evaluation_date="2026-09-03",
-            arms=("pi", "pydantic_ai"),
+            arms=("codex_sdk",),
         )
 
-        self.assertEqual(len(plans), 2)
-        self.assertEqual({plan["arm"] for plan in plans}, {"pi", "pydantic_ai"})
+        self.assertEqual(len(plans), 1)
+        self.assertEqual({plan["arm"] for plan in plans}, {"codex_sdk"})
         self.assertEqual({plan["icp_id"] for plan in plans}, {"icp_smoke"})
         self.assertEqual({plan["repetition"] for plan in plans}, {1})
 
@@ -98,10 +92,10 @@ class RunPlanSelectionTests(unittest.TestCase):
             model_pricing={},
             seed=7,
             evaluation_date="2026-09-03",
-            arms=("pi", "pydantic_ai"),
+            arms=("codex_sdk",),
         )
 
-        self.assertEqual(len(plans), 8)
+        self.assertEqual(len(plans), 4)
         self.assertEqual({plan["icp_id"] for plan in plans}, {"icp_a", "icp_b"})
         self.assertEqual({plan["repetition"] for plan in plans}, {1, 2})
 

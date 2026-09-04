@@ -11,13 +11,7 @@ from typing import Any
 from .models import validate_companies
 
 
-MODULES = {
-    "pydantic_ai": "experiments.harness_bakeoff.adapters.pydantic_ai",
-    "pi": "experiments.harness_bakeoff.adapters.pi_agent",
-    "openai_agents": "experiments.harness_bakeoff.adapters.openai_agents",
-    "codex_sdk": "experiments.harness_bakeoff.adapters.codex_sdk",
-    "smolagents": "experiments.harness_bakeoff.adapters.smolagents_agent",
-}
+MODULES = {"codex_sdk": "experiments.harness_bakeoff.adapters.codex_sdk"}
 SENTINEL = "BAKEOFF_RESULT_JSON="
 
 

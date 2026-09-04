@@ -1,4 +1,4 @@
-"""Orchestrate live smoke and randomized scored runs with fresh child sessions."""
+"""Orchestrate live Codex harness runs with fresh child sessions."""
 
 from __future__ import annotations
 
@@ -29,10 +29,8 @@ from .tool_server import ToolServer
 from .worker import SENTINEL
 
 
-ARMS = ("pydantic_ai", "pi", "openai_agents", "codex_sdk", "smolagents")
-DEFAULT_OUTPUT = (
-    Path.home() / "Downloads" / "deepline" / "data" / "live-harness-bakeoff"
-)
+ARMS = ("codex_sdk",)
+DEFAULT_OUTPUT = Path.home() / "Downloads" / "deepline" / "data" / "live-codex-harness"
 ATTEMPT_SECONDS = 12 * 60
 MAX_COMPANIES = 5
 MAX_PROVIDER_CALLS = 30
@@ -42,7 +40,7 @@ MAX_COMBINED_COST_USD = Decimal("4")
 MAX_INPUT_TOKENS = Decimal("120000")
 MAX_OUTPUT_TOKENS = Decimal("15000")
 REASONING_EFFORT = "medium"
-RUNNER_SCHEMA = "leadpoet-harness-bakeoff-run-v2"
+RUNNER_SCHEMA = "leadpoet-codex-harness-run-v1"
 SMOKE_EVIDENCE_TIMEOUT_SECONDS = 20.0
 
 _PLAN_FIELDS = (
@@ -162,8 +160,7 @@ def _detail_number(usage: dict[str, Any], group: str, *keys: str) -> Decimal | N
         details = details[0]
     if isinstance(details, dict):
         return _usage_number(details, *keys)
-    # The OpenAI Agents adapter serializes its Pydantic detail objects through
-    # their stable field repr. Accept that current framework usage shape too.
+    # Accept framework detail objects serialized through their stable field repr.
     if isinstance(details, str):
         for key in keys:
             match = re.search(rf"(?:^|[\s,(]){re.escape(key)}=([^,\s)]+)", details)
@@ -224,8 +221,7 @@ def _estimate_entry_cost(
     cache_read = cache_read or Decimal(0)
     cache_write = cache_write or Decimal(0)
 
-    # PydanticAI, OpenAI Agents, and Codex report cache tokens inside input.
-    # Pi reports them as separate buckets. The total makes this distinction safe.
+    # Codex reports cache tokens inside input. Use the total conservatively.
     total_tokens = _usage_number(usage, "total_tokens")
     cached_tokens = cache_read + cache_write
     if cached_tokens:

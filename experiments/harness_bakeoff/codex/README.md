@@ -1,6 +1,6 @@
-# Codex SDK bakeoff arm
+# Codex SDK sourcing harness
 
-Install this arm without changing production dependencies:
+Install the Node.js worker:
 
 ```sh
 npm ci --prefix experiments/harness_bakeoff/codex

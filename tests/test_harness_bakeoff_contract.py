@@ -4,11 +4,16 @@ import importlib
 import inspect
 import unittest
 
+import harness
+
 from experiments.harness_bakeoff.models import CompanyResult, validate_companies
 from experiments.harness_bakeoff.worker import MODULES
 
 
 class HarnessContractTests(unittest.TestCase):
+    def test_public_entrypoint_has_one_icp_parameter(self) -> None:
+        self.assertEqual(list(inspect.signature(harness.run_icp).parameters), ["icp"])
+
     def test_each_harness_exposes_run_icp(self) -> None:
         for arm, module_name in MODULES.items():
             with self.subTest(arm=arm):

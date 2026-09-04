@@ -1,9 +1,9 @@
 {
-  "name": "@leadpoet/harness-bakeoff-codex",
+  "name": "@leadpoet/codex-harness",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Isolated Codex SDK challenger for the live lead-sourcing bakeoff",
+  "description": "Codex SDK harness for live B2B lead sourcing",
   "engines": {
     "node": ">=18"
   },

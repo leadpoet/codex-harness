@@ -1,4 +1,4 @@
-"""Live OpenRouter model and tool-use preflight shared by all arms."""
+"""Live OpenRouter model and tool-use preflight for this harness."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ def _headers(api_key: str) -> dict[str, str]:
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
         "HTTP-Referer": "https://github.com/leadpoet/codex-harness",
-        "X-Title": "Leadpoet Codex harness bakeoff",
+        "X-Title": "Leadpoet Codex harness",
     }
 
 

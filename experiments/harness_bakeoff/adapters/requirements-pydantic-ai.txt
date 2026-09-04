@@ -1,1 +1,0 @@
-pydantic-ai-slim[openrouter]==2.37.0
