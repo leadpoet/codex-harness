@@ -67,4 +67,7 @@ fresh process and the documented provider, token, time, and cost limits.
 
 ## License
 
-MIT
+Copyright (c) 2026 Leadpoet.
+
+Licensed under the GNU Affero General Public License, version 3 only
+(`AGPL-3.0-only`). See [LICENSE](LICENSE).
